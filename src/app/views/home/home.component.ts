@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
 
   public openModal(template: TemplateRef<any>, pokemon: PokeAPI): BsModalRef {
     this.currentPokemon = pokemon;
+    console.log(this.currentPokemon)
     return this.modalRef = this.modalService.show(template, {
       class: 'modal-dialog-centered, modal-xl align',
       keyboard: false,

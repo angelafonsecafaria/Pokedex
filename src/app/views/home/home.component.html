@@ -1,8 +1,8 @@
-<app-header></app-header>
+<app-header></app-header><br><br><br><br><br>
 <div class="poke-container">
   <div class="row">
     <div class="col-lg-3 col-md-3 col-6" style="margin-bottom:10px;" *ngFor="let pokemon of pokemons?.results">
-      <div class="card pokemon-card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon.details)">
+      <div class="card pokemon-card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon)">
         <div class="name">
           <h5> {{ pokemon.name }}</h5>
         </div>
@@ -26,15 +26,11 @@
 
 <ng-template #pokemonDetails>
   <div class="modal-header modal-header-custom">
-    <h1 class="text-center text-uppercase Section-Heading">{{currentPokemon.name}}</h1>
     <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-   <app-pokemons [currentPokemon]="currentPokemon"></app-pokemons>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Fechar</button>
+  <div class="modal-body" style="background:white;">
+   <app-pokemons-general [currentPokemon]="currentPokemon"></app-pokemons-general>
   </div>
 </ng-template>

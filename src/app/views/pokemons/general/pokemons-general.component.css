@@ -1,0 +1,53 @@
+.modal-header-custom {
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+  color: #6d6d6d;
+}
+
+.card {
+  border: 1px solid white !important;
+  font-size: 18px;
+}
+body {
+  margin: 30px;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 250px;
+  text-align: center;
+  overflow: scroll; /* Sempre aparece a barra de rolagem */
+  overflow: auto;
+  border: none;
+}
+
+table tr th,
+table tr td {
+  padding: 5px;
+  vertical-align: middle;
+}
+
+table tr th {
+  background: #28a745;
+  color: white;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+
+/* bottom-left border-radius */
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+
+/* bottom-right border-radius */
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}

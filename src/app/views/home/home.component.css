@@ -5,6 +5,8 @@
   justify-content: center;
   margin: 0 auto;
   max-width: 1200px;
+  min-width: 400px;
+  min-height: 400px;
 }
 
 .pokemon-card {
@@ -13,6 +15,7 @@
 }
 
 .card {
+  flex: 1 1 150px;
   border-radius: 20px;
   padding: 7px 11px;
   border-color: white;
@@ -48,6 +51,7 @@
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .info {
@@ -77,5 +81,13 @@
   cursor: pointer;
 }
 
+.modal-header-custom {
+  background: white;
+}
 
+@media screen and (max-width: 350px){
+  .mr-3{
+     margin-right: 0 !important;
+  }
+}
 
