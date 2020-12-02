@@ -1,0 +1,33 @@
+.MainDiv {
+    font-family: "AlleynW01-Regular", sans-serif;
+    color: #505050;
+  }
+  
+  .table > tr > td:first-child {
+    color: #505050;
+  }
+  
+  .table > tr:first-child > td > button {
+    color: #505050;
+  }
+  
+  .Section-Heading {
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+    color: #6d6d6d;
+  }
+  
+  .bioDiv {
+    padding-right: 0;
+    margin-right: 0;
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
+  }
+  
+  .statDiv {
+    padding-left: 0;
+    padding-right: 3rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
