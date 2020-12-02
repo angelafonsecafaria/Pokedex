@@ -9,12 +9,9 @@
   min-height: 400px;
 }
 
-.pokemon-card {
+.card{
   color: #343a40;
   background-color: rgb(35, 35, 35);
-}
-
-.card {
   flex: 1 1 150px;
   border-radius: 20px;
   padding: 7px 11px;
@@ -79,10 +76,6 @@
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
   cursor: pointer;
-}
-
-.modal-header-custom {
-  background: white;
 }
 
 @media screen and (max-width: 350px){

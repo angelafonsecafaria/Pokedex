@@ -1,7 +1,10 @@
 import { Component, EventEmitter, OnInit, Output, TemplateRef } from '@angular/core';
-import { PokedexService } from 'src/app/services/pokedex.service';
+
+// Ngx-Bootstrap:
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
+import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 import { PokeAPI, PokemonDetails, Results, TYPE_COLOURS } from 'src/app/shared/model/interface';
 
 @Component({
@@ -19,7 +22,7 @@ export class HomeComponent implements OnInit {
   public modalReference: NgbModalRef;
   public currentPokemon: PokeAPI;
 
-  constructor(private pokedexService: PokedexService, config: NgbModalConfig, private modalService: BsModalService) { }
+  constructor(private pokemonService: PokemonService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.getPokemons();
@@ -27,16 +30,15 @@ export class HomeComponent implements OnInit {
 
   public openModal(template: TemplateRef<any>, pokemon: PokeAPI): BsModalRef {
     this.currentPokemon = pokemon;
-    console.log(this.currentPokemon)
     return this.modalRef = this.modalService.show(template, {
-      class: 'modal-dialog-centered, modal-xl align',
+      class: 'modal-dialog-centered, modal-xl',
       keyboard: false,
       animated: true
     });
   }
 
   private getPokemons(): void {
-    this.pokedexService.getPokemon().subscribe((data: PokeAPI) => {
+    this.pokemonService.getPokemon().subscribe((data: PokeAPI) => {
       this.pokemons = data;
       if (this.pokemons.results && this.pokemons.results.length) {
         // get pokemon details for every pokemon
@@ -56,7 +58,7 @@ export class HomeComponent implements OnInit {
    * Gets and sets a pokemons details
    */
   private getPokemonDetails(pokemon: Results): void {
-    this.pokedexService
+    this.pokemonService
       .getPokemonDetails(pokemon.name)
       .subscribe((details: PokemonDetails) => {
         pokemon.details = details;
@@ -77,7 +79,7 @@ export class HomeComponent implements OnInit {
    * a pokemon is shown)
    */
   private getPokemonSpeciesDetails(pokemon: Results): void {
-    this.pokedexService
+    this.pokemonService
       .getPokemonSpecies(pokemon.name)
       .subscribe((species: any) => {
         const entries = species.flavor_text_entries;
@@ -95,7 +97,7 @@ export class HomeComponent implements OnInit {
  * returns colour based on type mapped
  * in TYPE_COLOURS interface
  */
-  _getTypeColour(type: string): string {
+  public getTypeColour(type: string): string {
     if (type) {
       return '#' + TYPE_COLOURS[type];
     }

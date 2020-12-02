@@ -2,7 +2,7 @@
 <div class="poke-container">
   <div class="row">
     <div class="col-lg-3 col-md-3 col-6" style="margin-bottom:10px;" *ngFor="let pokemon of pokemons?.results">
-      <div class="card pokemon-card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon)">
+      <div class="card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon)">
         <div class="name">
           <h5> {{ pokemon.name }}</h5>
         </div>
@@ -15,7 +15,7 @@
         </div>
         <div class="row d-flex justify-content-center">
           <div class="col-sm-5 types" *ngFor="let type of pokemon?.details?.types"
-            [style.background]="_getTypeColour(type?.type?.name)">
+            [style.background]="getTypeColour(type?.type?.name)">
             {{ type.type.name}}
           </div>
         </div>
@@ -25,12 +25,12 @@
 </div>
 
 <ng-template #pokemonDetails>
-  <div class="modal-header modal-header-custom">
+  <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" style="background:white;">
-   <app-pokemons-general [currentPokemon]="currentPokemon"></app-pokemons-general>
+  <div class="modal-body">
+   <app-pokemon-general [currentPokemon]="currentPokemon"></app-pokemon-general>
   </div>
 </ng-template>
