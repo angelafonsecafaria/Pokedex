@@ -50,6 +50,10 @@ export class PokemonService {
     .pipe(catchError(this._handleError));
   }
   
+  public getEvolution(id: number): Observable<any>{
+    return this.http.get<any>(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
+    .pipe(catchError(this._handleError))
+  }
   /**
    * Handles any request error
    */

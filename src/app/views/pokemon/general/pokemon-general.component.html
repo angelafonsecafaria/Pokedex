@@ -1,5 +1,8 @@
 <div class="col-12">
     <h1 class="text-center text-uppercase">{{ currentPokemon.name }}</h1>
+    <div class="justify-content-center text-center">
+        <span style="padding: 4px;" class="number text-uppercase">#{{ currentPokemon.id.toString().padStart(3, '0') }}</span>
+    </div>
     <div class="row justify-content-center content" style="position: relative; padding-bottom: 3rem;">
         <div class="col-lg-5 d-flex flex-wrap">
             <img alt="Pokemon" class="mx-auto my-auto d-block"
@@ -13,16 +16,17 @@
             <table class="table shadow-lg bg-white rounded">
                 <thead>
                     <tr>
-                        <th style="width: 33.36%;">Type</th>
-                        <th style="width: 33.36%;">height</th>
-                        <th style="width: 33.36%;">Weight</th>
+                        <th style="width: 25%;">Type</th>
+                        <th style="width: 25%;">height</th>
+                        <th style="width: 25%;">Weight</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
                             <div class="row d-flex justify-content-center">
-                                <div class="col-sm-5" *ngFor="let type of currentPokemon?.details?.types">
+                                <div class="col-sm-5" *ngFor="let type of currentPokemon?.details?.types"
+                                    [style.color]="getTypeColour(type?.type?.name)">
                                     {{ type.type.name}}
                                 </div>
                             </div>

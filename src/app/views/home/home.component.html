@@ -1,4 +1,3 @@
-<app-header></app-header><br><br><br><br><br>
 <div class="poke-container">
   <div class="col-lg-2 col-md-6 col-6">
     <ng-select [items]="generations" class="rounded-pill" [searchable]="false" [clearable]="false"
@@ -8,7 +7,7 @@
   <ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-6" style="margin-bottom:10px;" *ngFor="let pokemon of pokemons">
-        <div class="card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon)">
+        <div class="card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon, pokemon.id)">
           <div class="name">
             <h5> {{ pokemon.name }}</h5>
           </div>

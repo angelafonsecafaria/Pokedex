@@ -6,6 +6,7 @@
 
 .text-uppercase {
   color: #6d6d6d;
+  font-family: "Bungee";
 }
 
 table {
@@ -21,6 +22,7 @@ table {
 table tr th {
   background: #28a745;
   color: white;
+  font-family: "Bungee";
 }
 
 table tr th,
@@ -48,3 +50,27 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
   border-bottom-right-radius: 6px;
 }
+
+.info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.number {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 0.8em;
+  padding: 5px 10px;
+}
+
+
+.types {
+  margin: 15px 10px 5px 0px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+}
+
+

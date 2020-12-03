@@ -13,7 +13,7 @@ import { PokeAPI, PokemonDetails, Results, TYPE_COLOURS } from 'src/app/shared/m
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit,  OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
   @Output() exportPokemons = new EventEmitter();
 
   private unsubscribeAll: Subject<any>;
@@ -35,18 +35,20 @@ export class HomeComponent implements OnInit,  OnDestroy {
     { id: 7, name: 'Generation vii' },
     { id: 8, name: 'Generation viii' }
   ];
-
-  constructor(private pokemonService: PokemonService, private modalService: BsModalService) { 
+  public evolution
+  constructor(private pokemonService: PokemonService, private modalService: BsModalService) {
     // Set the private defaults
     this.unsubscribeAll = new Subject();
   }
 
   ngOnInit(): void {
+    console.log(this.pokemonService.getEvolution(1).subscribe(res => console.log(res.chain.evolves_to)))
     this.getPokemons(this.selectedGeneration);
   }
 
-  public openModal(template: TemplateRef<any>, pokemon: PokeAPI): BsModalRef {
+  public openModal(template: TemplateRef<any>, pokemon: PokeAPI, pokemonId: number): BsModalRef {
     this.currentPokemon = pokemon;
+    // this.getEvolution(pokemonId)
     return this.modalRef = this.modalService.show(template, {
       class: 'modal-dialog-centered, modal-xl',
       keyboard: false,
@@ -57,23 +59,28 @@ export class HomeComponent implements OnInit,  OnDestroy {
   private getPokemons(id: number): void {
     this.isLoading = true;
     this.pokemonService.getPokemonGeneration(id)
-    .pipe(takeUntil(this.unsubscribeAll), finalize(() => this.isLoading = false)).subscribe((data: any) => {
-      this.pokemons = data.pokemon_species;
-      if (this.pokemons) {
-        // get pokemon details for every pokemon
-        this.pokemons.forEach(pokemon => {
-          // set pokemon id
-          pokemon.id = pokemon.url.split('/')[
-            pokemon.url.split('/').length - 2
-          ];
-          this.getPokemonDetails(pokemon);
-          this.getPokemonSpeciesDetails(pokemon);
-        });
-      }
+      .pipe(takeUntil(this.unsubscribeAll), finalize(() => this.isLoading = false)).subscribe((data: any) => {
+        this.pokemons = data.pokemon_species;
+        console.log(this.pokemons)
+        if (this.pokemons) {
+          // get pokemon details for every pokemon
+          this.pokemons.forEach(pokemon => {
+            // set pokemon id
+            pokemon.id = pokemon.url.split('/')[
+              pokemon.url.split('/').length - 2
+            ];
+            this.getPokemonDetails(pokemon);
+            this.getPokemonSpeciesDetails(pokemon);
+          });
+        }
 
-      console.log(this.pokemons.length)
-    });
+        console.log(this.pokemons.length)
+      });
   }
+
+  // private getEvolution(id: number): void {
+  //   this.isLoading = true;
+  // }
 
   /**
    * Gets and sets a pokemons details
@@ -85,10 +92,8 @@ export class HomeComponent implements OnInit,  OnDestroy {
         pokemon.details = details;
         // when last pokemon details have been loaded
         // send pokemons to header component
-        if (pokemon.id === '151') {
-          this.pokemonsLoaded = true;
-          this.exportPokemons.emit(this.pokemons.results);
-        }
+        this.pokemonsLoaded = true;
+        this.exportPokemons.emit(this.pokemons.results);
       });
   }
 
@@ -124,13 +129,13 @@ export class HomeComponent implements OnInit,  OnDestroy {
     }
   }
 
-  public changeGeneration(event): void{
+  public changeGeneration(event): void {
     this.getPokemons(event.id)
   }
 
-   /**
-   * On destroy
-   */
+  /**
+  * On destroy
+  */
   ngOnDestroy(): void {
     // Unsubscribe from all subscriptions
     this.unsubscribeAll.next();
