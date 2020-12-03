@@ -4,14 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 // Ngx-Bootstrap:
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 // Components:
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './views/home/home.component';
 import { PokemonGeneralComponent } from './views/pokemon/general/pokemon-general.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 // Pipes:
 import { HeightPipe } from './shared/pipes/height/height.pipe';
@@ -23,6 +25,7 @@ import { WeightPipe } from './shared/pipes/weight/weight.pipe';
     HeaderComponent,
     HomeComponent,
     PokemonGeneralComponent,
+    LoaderComponent,
 
     //Pipes
     HeightPipe,
@@ -33,7 +36,8 @@ import { WeightPipe } from './shared/pipes/weight/weight.pipe';
     AppRoutingModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    NgbModule
+    NgSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

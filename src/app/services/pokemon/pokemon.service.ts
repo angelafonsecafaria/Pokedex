@@ -30,7 +30,7 @@ export class PokemonService {
    /**
    * Uses pokemon name to retrieve individual pokemon details
    */
-  public getPokemonDetails(name): Observable<PokemonDetails> {
+  public getPokemonDetails(name: string): Observable<PokemonDetails> {
     return this.http
       .get<PokemonDetails>(`${this.pokeAPI}/${name}`)
       .pipe(catchError(this._handleError));
@@ -39,10 +39,15 @@ export class PokemonService {
   /**
    * Uses pokemon name to retrieve individual pokemon species details
    */
-  public getPokemonSpecies(name): Observable<any> {
+  public getPokemonSpecies(name: string): Observable<any> {
     return this.http
       .get<any>(`${this.pokeSpeciesAPI}/${name}`)
       .pipe(catchError(this._handleError));
+  }
+
+  public getPokemonGeneration(id: number): Observable<any>{
+    return this.http.get<any>(`https://pokeapi.co/api/v2/generation/${id}`)
+    .pipe(catchError(this._handleError));
   }
   
   /**

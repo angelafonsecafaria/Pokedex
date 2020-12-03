@@ -1,8 +1,9 @@
-import { Component, EventEmitter, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
 
 // Ngx-Bootstrap:
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs/operators';
 
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 import { PokeAPI, PokemonDetails, Results, TYPE_COLOURS } from 'src/app/shared/model/interface';
@@ -12,20 +13,36 @@ import { PokeAPI, PokemonDetails, Results, TYPE_COLOURS } from 'src/app/shared/m
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,  OnDestroy {
   @Output() exportPokemons = new EventEmitter();
+
+  private unsubscribeAll: Subject<any>;
+
   public modalRef: BsModalRef;
   public pokemonsLoaded: boolean;
-  public pokemons: PokeAPI;
+  public pokemons: any;
   public types: Array<any> = [];
-  public selectedGeneration: number;
-  public modalReference: NgbModalRef;
   public currentPokemon: PokeAPI;
+  public selectedGeneration: number = 1;
+  public isLoading: boolean;
+  public generations = [
+    { id: 1, name: 'Generation i' },
+    { id: 2, name: 'Generation ii' },
+    { id: 3, name: 'Generation iii' },
+    { id: 4, name: 'Generation iv' },
+    { id: 5, name: 'Generation v' },
+    { id: 6, name: 'Generation vi' },
+    { id: 7, name: 'Generation vii' },
+    { id: 8, name: 'Generation viii' }
+  ];
 
-  constructor(private pokemonService: PokemonService, private modalService: BsModalService) { }
+  constructor(private pokemonService: PokemonService, private modalService: BsModalService) { 
+    // Set the private defaults
+    this.unsubscribeAll = new Subject();
+  }
 
   ngOnInit(): void {
-    this.getPokemons();
+    this.getPokemons(this.selectedGeneration);
   }
 
   public openModal(template: TemplateRef<any>, pokemon: PokeAPI): BsModalRef {
@@ -37,12 +54,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  private getPokemons(): void {
-    this.pokemonService.getPokemon().subscribe((data: PokeAPI) => {
-      this.pokemons = data;
-      if (this.pokemons.results && this.pokemons.results.length) {
+  private getPokemons(id: number): void {
+    this.isLoading = true;
+    this.pokemonService.getPokemonGeneration(id)
+    .pipe(takeUntil(this.unsubscribeAll), finalize(() => this.isLoading = false)).subscribe((data: any) => {
+      this.pokemons = data.pokemon_species;
+      if (this.pokemons) {
         // get pokemon details for every pokemon
-        this.pokemons.results.forEach(pokemon => {
+        this.pokemons.forEach(pokemon => {
           // set pokemon id
           pokemon.id = pokemon.url.split('/')[
             pokemon.url.split('/').length - 2
@@ -51,6 +70,8 @@ export class HomeComponent implements OnInit {
           this.getPokemonSpeciesDetails(pokemon);
         });
       }
+
+      console.log(this.pokemons.length)
     });
   }
 
@@ -101,6 +122,19 @@ export class HomeComponent implements OnInit {
     if (type) {
       return '#' + TYPE_COLOURS[type];
     }
+  }
+
+  public changeGeneration(event): void{
+    this.getPokemons(event.id)
+  }
+
+   /**
+   * On destroy
+   */
+  ngOnDestroy(): void {
+    // Unsubscribe from all subscriptions
+    this.unsubscribeAll.next();
+    this.unsubscribeAll.complete();
   }
 }
 
