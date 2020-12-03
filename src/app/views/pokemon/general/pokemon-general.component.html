@@ -12,9 +12,10 @@
                 src="https://projectpokemon.org/images/normal-sprite/{{ currentPokemon.name }}.gif">
             <table class="table shadow-lg bg-white rounded">
                 <thead>
-                    <tr><th scope="col">Type</th>
-                        <th scope="col">height</th>
-                        <th scope="col">Weight</th>
+                    <tr>
+                        <th style="width: 33.36%;">Type</th>
+                        <th style="width: 33.36%;">height</th>
+                        <th style="width: 33.36%;">Weight</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,8 +27,8 @@
                                 </div>
                             </div>
                         </td>
-                        <td>{{ currentPokemon?.details.height }}</td>
-                        <td>{{ currentPokemon?.details.weight }}</td>
+                        <td>{{ currentPokemon?.details.height | height }}</td>
+                        <td>{{ currentPokemon?.details.weight | weight }}</td>
                     </tr>
                 </tbody>
             </table>

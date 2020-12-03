@@ -13,12 +13,20 @@ import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './views/home/home.component';
 import { PokemonGeneralComponent } from './views/pokemon/general/pokemon-general.component';
 
+// Pipes:
+import { HeightPipe } from './shared/pipes/height/height.pipe';
+import { WeightPipe } from './shared/pipes/weight/weight.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    PokemonGeneralComponent
+    PokemonGeneralComponent,
+
+    //Pipes
+    HeightPipe,
+    WeightPipe
   ],
   imports: [
     BrowserModule,
