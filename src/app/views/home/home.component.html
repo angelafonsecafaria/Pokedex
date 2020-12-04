@@ -1,32 +1,31 @@
-<div class="poke-container">
-  <div class="col-lg-2 col-md-6 col-6">
-    <ng-select [items]="generations" class="rounded-pill" [searchable]="false" [clearable]="false"
-      (change)="changeGeneration($event)" bindLabel="name" bindValue="id" [(ngModel)]="selectedGeneration">
-    </ng-select>
-  </div><br><br>
+<div class="container poke-container">
   <ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
-    <div class="row">
-      <div class="col-lg-3 col-md-3 col-6" style="margin-bottom:10px;" *ngFor="let pokemon of pokemons">
-        <div class="card shadow p-3 mb-5 bg-white">
-          <div class="name">
-            <h5> {{ pokemon.name }}</h5>
-          </div>
-          <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)" tooltip="Learn more about pokemon">
-            <img src="https://pokeres.bastionbot.org/images/pokemon/{{ pokemon.id }}.png" width="120"
-              alt="{{ pokemon.name }}" onerror="this.src='../../../assets/ball.png';"/>
-          </div>
-          <div class="info">
-            <span class="number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <div class="col-sm-5 types" *ngFor="let type of pokemon?.details?.types"
-              [style.background]="getTypeColour(type?.type?.name)">
-              {{ type.type.name }}
-            </div>
+    <ng-select [items]="generations" class="rounded-pill" [searchable]="false" [clearable]="false"
+    (change)="changeGeneration($event)" bindLabel="name" bindValue="id" [(ngModel)]="selectedGeneration">
+  </ng-select>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+    <div class="col mb-4" *ngFor="let pokemon of pokemons">
+      <div class="card">
+        <div class="name">
+          <h5> {{ pokemon.name }}</h5>
+        </div>
+        <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)"
+          tooltip="Learn more about pokemon">
+          <img src="https://pokeres.bastionbot.org/images/pokemon/{{ pokemon.id }}.png" width="120"
+            alt="{{ pokemon.name }}" onerror="this.src='../../../assets/ball.png';" />
+        </div>
+        <div class="info">
+          <span class="number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-mb-6 types" *ngFor="let type of pokemon?.details?.types"
+            [style.background]="getTypeColour(type?.type?.name)">
+            {{ type.type.name }}
           </div>
         </div>
       </div>
     </div>
+  </div>
   </ng-template>
   <ng-template #loading>
     <div class="col-lg-12 d-flex justify-content-center">
