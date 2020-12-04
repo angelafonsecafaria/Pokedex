@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="">![image](ball.png)</a>
+  <a href="">![image](/image/ball.png)</a>
   
   ![GitHub release](https://img.shields.io/badge/Version-1.0-brightgreen)
   ![Angular CLI](https://img.shields.io/badge/Angular_CLI-9.2.2-orange)
@@ -15,7 +15,7 @@
 <p align="center">Leave a :star: if you liked it, also share :link: with those who may be interested.<p>
  
 # Screenshots
-<p align="center">![imgage](pokemon-app.gif)
+<p align="center">![image](/image/pokemon-app.gif)
  
 # Versions
  **v1.0**
