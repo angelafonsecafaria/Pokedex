@@ -1,7 +1,9 @@
 <div class="container poke-container">
-  <ng-select [items]="generations" class="rounded-pill" [searchable]="false" [clearable]="false"
-    (change)="changeGeneration($event)" bindLabel="name" bindValue="id" [(ngModel)]="selectedGeneration">
-  </ng-select>
+  <div class="col-lg-2">
+    <ng-select [items]="generations" class="rounded-pill" [searchable]="false" [clearable]="false"
+      (change)="changeGeneration($event)" bindLabel="name" bindValue="id" [(ngModel)]="selectedGeneration">
+    </ng-select>
+  </div>
   <ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
       <div class="col mb-4" *ngFor="let pokemon of pokemons">

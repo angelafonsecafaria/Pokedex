@@ -1,83 +1,101 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat&display=swap");
 
-body{
-  background: #FF6B50;
+body {
+  background: #ff6b50;
 }
 
 .grass {
-	box-shadow: 0 0 20px #5fbd58;
-  }
-  
-  .bug {
-	box-shadow: 0 0 20px #92bc2c;
-  }
-  
-  .dark {
-	box-shadow: 0 0 20px #595761;
-  }
-  
-  .dragon {
-	box-shadow: 0 0 20px #0c69c8;
-  }
-  
-  .electric {
-	box-shadow: 0 0 20px #f2d94e;
-  }
-  
-  .fire {
-	box-shadow: 0 0 20px #fba54c;
-  }
-  
-  .fairy {
-	box-shadow: 0 0 20px #ee90e6;
-  }
-  
-  .fighting {
-	box-shadow: 0 0 20px #d3425f;
-  }
-  
-  .flying {
-	box-shadow: 0 0 20px #a1bbec;
-  }
-  
-  .ghost {
-	box-shadow: 0 0 20px #5f6dbc;
-  }
-  
-  .grass {
-	box-shadow: 0 0 20px #5fbd58;
-  }
-  
-  .ground {
-	box-shadow: 0 0 20px #da7c4d;
-  }
-  
-  .ice {
-	box-shadow: 0 0 20px #75d0c1;
-  }
-  
-  .normal {
-	box-shadow: 0 0 20px #a0a29f;
-  }
-  
-  .poison {
-	box-shadow: 0 0 20px #b763cf;
-  }
-  
-  .psychic {
-	box-shadow: 0 0 20px #fa8581;
-  }
-  
-  .rock {
-	box-shadow: 0 0 20px #c9bb8a;
-  }
-  
-  .steel {
-	box-shadow: 0 0 20px #5695a3;
-  }
-  
-  .water {
-	box-shadow: 0 0 20px #539ddf;
-  }
-  
+  box-shadow: 0 0 20px #5fbd58;
+}
+
+.bug {
+  box-shadow: 0 0 20px #92bc2c;
+}
+
+.dark {
+  box-shadow: 0 0 20px #595761;
+}
+
+.dragon {
+  box-shadow: 0 0 20px #0c69c8;
+}
+
+.electric {
+  box-shadow: 0 0 20px #f2d94e;
+}
+
+.fire {
+  box-shadow: 0 0 20px #fba54c;
+}
+
+.fairy {
+  box-shadow: 0 0 20px #ee90e6;
+}
+
+.fighting {
+  box-shadow: 0 0 20px #d3425f;
+}
+
+.flying {
+  box-shadow: 0 0 20px #a1bbec;
+}
+
+.ghost {
+  box-shadow: 0 0 20px #5f6dbc;
+}
+
+.grass {
+  box-shadow: 0 0 20px #5fbd58;
+}
+
+.ground {
+  box-shadow: 0 0 20px #da7c4d;
+}
+
+.ice {
+  box-shadow: 0 0 20px #75d0c1;
+}
+
+.normal {
+  box-shadow: 0 0 20px #a0a29f;
+}
+
+.poison {
+  box-shadow: 0 0 20px #b763cf;
+}
+
+.psychic {
+  box-shadow: 0 0 20px #fa8581;
+}
+
+.rock {
+  box-shadow: 0 0 20px #c9bb8a;
+}
+
+.steel {
+  box-shadow: 0 0 20px #5695a3;
+}
+
+.water {
+  box-shadow: 0 0 20px #539ddf;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
