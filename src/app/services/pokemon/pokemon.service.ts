@@ -12,62 +12,53 @@ export class PokemonService {
 
   private pokeAPI: String;
   private pokeSpeciesAPI: String;
+  private pokeGenerationApi: String;
 
   constructor(private http: HttpClient) {
     this.pokeAPI = environment.pokemonURL;
     this.pokeSpeciesAPI = environment.pokemonSpeciesURL;
+    this.pokeGenerationApi = environment.pokemonGenerationURL;
   }
 
   /**
-* Returns original 151 pokemon
-*/
-  public getPokemon(): Observable<PokeAPI> {
+  * Returns original 151 pokemon
+  */
+  public fetchPokemons(): Observable<PokeAPI> {
     return this.http
       .get<PokeAPI>(`${this.pokeAPI}?limit=151`)
-      .pipe(catchError(this._handleError));
+      .pipe(catchError(this.handleError));
   }
 
-   /**
-   * Uses pokemon name to retrieve individual pokemon details
-   */
-  public getPokemonDetails(name: string): Observable<PokemonDetails> {
+  /**
+  * Uses pokemon name to retrieve individual pokemon details
+  */
+  public fetchPokemonDetails(name: string): Observable<PokemonDetails> {
     return this.http
       .get<PokemonDetails>(`${this.pokeAPI}/${name}`)
-      .pipe(catchError(this._handleError));
+      .pipe(catchError(this.handleError));
   }
 
   /**
    * Uses pokemon name to retrieve individual pokemon species details
    */
-  public getPokemonSpecies(name: string): Observable<any> {
+  public fetchPokemonSpecies(name: string): Observable<PokeAPI> {
     return this.http
       .get<any>(`${this.pokeSpeciesAPI}/${name}`)
-      .pipe(catchError(this._handleError));
+      .pipe(catchError(this.handleError));
   }
 
-  public getPokemonGeneration(id: number): Observable<any>{
-    return this.http.get<any>(`https://pokeapi.co/api/v2/generation/${id}`)
-    .pipe(catchError(this._handleError));
+  /**
+   * Uses pokemon id to retrieve generation pokemon
+   */
+  public fetchPokemonGeneration(id: number): Observable<any> {
+    return this.http.get<any>(`${this.pokeGenerationApi}/${id}`)
+      .pipe(catchError(this.handleError));
   }
-  
-  public getEvolution(id: number): Observable<any>{
-    return this.http.get<any>(`https://pokeapi.co/api/v2/evolution-chain/${id}/`)
-    .pipe(catchError(this._handleError))
-  }
+
   /**
    * Handles any request error
-   */
-  private _handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
-    }
+  */
+  private handleError(error: HttpErrorResponse) {
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
   }

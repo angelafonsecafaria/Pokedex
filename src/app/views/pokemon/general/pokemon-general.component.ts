@@ -10,13 +10,10 @@ import { TYPE_COLOURS } from 'src/app/shared/model/interface';
 export class PokemonGeneralComponent implements OnInit {
 
   @Input() public currentPokemon: any;
-  @Input() public evolution: any;
 
   constructor() { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   public getTypeColour(type: string): string {
     if (type) {
