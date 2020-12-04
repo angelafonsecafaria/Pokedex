@@ -1,29 +1,5 @@
-# Pokelist
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
-
-
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
 <p align="center">
-  <a href=""><img src="/assets/ball.png" width="250px"></a>
+  <a href=""><img src="../../assets/ball.png" width="250px"></a>
   
   ![GitHub release](https://img.shields.io/badge/Version-1.0-brightgreen)
   ![Angular CLI](https://img.shields.io/badge/Angular_CLI-9.2.2-orange)
@@ -39,7 +15,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 <p align="center">Leave a :star: if you liked it, also share :link: with those who may be interested.<p>
  
 # Screenshots
-<p align="center"><img src="/assets/pokemon-app.gif" width="300"> 
+<p align="center"><img src="../../assets/pokemon-app.gif" width="300"> 
  
 # Versions
  **v1.0**
