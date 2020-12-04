@@ -1,5 +1,5 @@
 <p align="center">
-  ![IMG](/image/ball.png) <br>
+  ![IMG](/assets/image/ball.png) <br>
   ![GitHub release](https://img.shields.io/badge/Version-1.0-brightgreen)
   ![Angular CLI](https://img.shields.io/badge/Angular_CLI-9.2.2-orange)
   ![NPM](https://img.shields.io/badge/NPM-6.14.6-yellow)
