@@ -1,10 +1,4 @@
 <p align="center">
-  ![GitHub release](https://img.shields.io/badge/Version-1.0-brightgreen)
-  ![Angular CLI](https://img.shields.io/badge/Angular_CLI-9.2.2-orange)
-  ![NPM](https://img.shields.io/badge/NPM-6.14.6-yellow)
-  ![Node](https://img.shields.io/badge/Node-12.18.4-blue)
-</p>
-<p align="center">
    Pokédex sample app developed with Angular 9+ and Bootstrap 4.<br>
    Built using the PokéAPI.
    <p align="center">[For best experience use Chrome or any other Chromium-based browser]</p>
