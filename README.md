@@ -34,8 +34,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 # Screenshots
-
-<img src="https://github.com/angelafonsecafaria/Pokedex/blob/main/src/assets/image/pokedex-app.gif" width="250px">
+<p align="center">
+ <img src="https://github.com/angelafonsecafaria/Pokedex/blob/main/src/assets/image/pokedex-app.gif" width="680px">
+</p
 
 # Credits
 Thanks to [PokéAPI.co](https://github.com/PokeAPI/pokeapi).
