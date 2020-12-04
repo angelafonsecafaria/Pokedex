@@ -6,9 +6,6 @@
 
 <p align="center">Leave a :star: if you liked it, also share :link: with those who may be interested.<p>
  
-# Screenshots
-
- 
 # Versions
  **v1.0**
 
