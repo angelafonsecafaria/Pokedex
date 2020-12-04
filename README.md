@@ -1,5 +1,4 @@
 <p align="center">
-  ![IMG](/assets/image/ball.png) <br>
   ![GitHub release](https://img.shields.io/badge/Version-1.0-brightgreen)
   ![Angular CLI](https://img.shields.io/badge/Angular_CLI-9.2.2-orange)
   ![NPM](https://img.shields.io/badge/NPM-6.14.6-yellow)
@@ -14,7 +13,6 @@
 <p align="center">Leave a :star: if you liked it, also share :link: with those who may be interested.<p>
  
 # Screenshots
-<p align="center">  ![image](/image/pokemon-app.gif)  
 
  
 # Versions
