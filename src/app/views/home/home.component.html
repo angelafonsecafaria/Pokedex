@@ -7,11 +7,11 @@
   <ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
     <div class="row">
       <div class="col-lg-3 col-md-3 col-6" style="margin-bottom:10px;" *ngFor="let pokemon of pokemons">
-        <div class="card shadow p-3 mb-5 bg-white" (click)="openModal(pokemonDetails, pokemon, pokemon.id)">
+        <div class="card shadow p-3 mb-5 bg-white">
           <div class="name">
             <h5> {{ pokemon.name }}</h5>
           </div>
-          <div class="img-container">
+          <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)">
             <img src="https://pokeres.bastionbot.org/images/pokemon/{{ pokemon.id }}.png" width="120"
               alt="{{ pokemon.name }}">
           </div>
