@@ -65,11 +65,12 @@ table tr:last-child td:last-child {
 
 
 .types {
-  margin: 15px 10px 5px 0px;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 15px;
+  margin: 3px;
+  padding: 3%;
+  font-size: 11px;
+  width: 30%;
   text-align: center;
+  border-radius: 10px;
   color: white;
 }
 
