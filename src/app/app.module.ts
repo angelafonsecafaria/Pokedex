@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 // Components:
 import { AppComponent } from './app.component';
@@ -37,7 +38,8 @@ import { WeightPipe } from './shared/pipes/weight/weight.pipe';
     HttpClientModule,
     ModalModule.forRoot(),
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

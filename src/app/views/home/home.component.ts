@@ -58,10 +58,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private getPokemons(id: number): void {
     this.isLoading = true;
-    this.pokemonService.getPokemonGeneration(id)
-      .pipe(takeUntil(this.unsubscribeAll), finalize(() => this.isLoading = false)).subscribe((data: any) => {
-        this.pokemons = data.pokemon_species;
-        console.log(this.pokemons)
+    if (this.selectedGeneration === 1) {
+      this.pokemonService.getPokemon().pipe(takeUntil(this.unsubscribeAll), finalize(() => this.isLoading = false)).subscribe((data: any) => {
+        this.pokemons = data.results;
         if (this.pokemons) {
           // get pokemon details for every pokemon
           this.pokemons.forEach(pokemon => {
@@ -73,9 +72,28 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.getPokemonSpeciesDetails(pokemon);
           });
         }
-
-        console.log(this.pokemons.length)
       });
+    }
+    if (this.selectedGeneration !== 1) {
+      this.pokemonService.getPokemonGeneration(id)
+        .pipe(takeUntil(this.unsubscribeAll), finalize(() => this.isLoading = false)).subscribe((data: any) => {
+          this.pokemons = data.pokemon_species;
+          console.log(this.pokemons)
+          if (this.pokemons) {
+            // get pokemon details for every pokemon
+            this.pokemons.forEach(pokemon => {
+              // set pokemon id
+              pokemon.id = pokemon.url.split('/')[
+                pokemon.url.split('/').length - 2
+              ];
+              this.getPokemonDetails(pokemon);
+              this.getPokemonSpeciesDetails(pokemon);
+            });
+            this.pokemons.sort(((a, b) => (b.id < a.id) ? 1 : ((b.id > a.id) ? -1 : 0)));
+          }
+        });
+    }
+
   }
 
   // private getEvolution(id: number): void {
@@ -130,7 +148,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public changeGeneration(event): void {
-    this.getPokemons(event.id)
+    this.selectedGeneration = event.id
+    this.getPokemons(this.selectedGeneration)
   }
 
   /**

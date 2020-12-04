@@ -11,9 +11,9 @@
           <div class="name">
             <h5> {{ pokemon.name }}</h5>
           </div>
-          <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)">
+          <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)" tooltip="Learn more about pokemon">
             <img src="https://pokeres.bastionbot.org/images/pokemon/{{ pokemon.id }}.png" width="120"
-              alt="{{ pokemon.name }}">
+              alt="{{ pokemon.name }}" onerror="this.src='../../../assets/ball.png';"/>
           </div>
           <div class="info">
             <span class="number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
