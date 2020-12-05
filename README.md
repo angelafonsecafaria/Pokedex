@@ -8,6 +8,10 @@
  
 # Versions
  **v1.0**
+ 
+# Deploy Heroku
+
+Access: https://pokedex-app-angular.herokuapp.com/pokelist/
 
 # Getting Started:
 
