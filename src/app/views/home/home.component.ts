@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.selectedGeneration === this.generations[0].id) {
       this.pokemonService.fetchPokemons()
         .pipe(takeUntil(this.unsubscribeAll),
-          finalize(() => this.isLoading = true))
+          finalize(() => this.isLoading = false))
         .subscribe((data: PokeAPI) => {
           this.pokemons = data.results;
           this.updatePokemons();
