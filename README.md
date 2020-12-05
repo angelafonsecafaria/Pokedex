@@ -1,6 +1,6 @@
 <p align="center">
-   Pokédex sample app developed with Angular 9+ and Bootstrap 4.<br>
-   Built using the PokéAPI.
+  <img src="https://logodownload.org/wp-content/uploads/2017/08/pokemon-logo.png" width="250px"><br><br>
+   Pokédex sample app developed with Angular 9+ and Bootstrap 4. Built using the PokéAPI.
    <p align="center">[For best experience use Chrome or any other Chromium-based browser]</p>
 </p>
 
@@ -25,13 +25,18 @@
 1. `npm cache clean --force`
 1. `sudo npm install -g @angular/cli`
 
-## Development server
+**Development server**
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
+**Build**
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+# Screenshots
+<p align="center">
+ <img src="https://github.com/angelafonsecafaria/Pokedex/blob/main/src/assets/image/pokedex-app.gif" width="680px">
+</p>
 
 # Credits
 Thanks to [PokéAPI.co](https://github.com/PokeAPI/pokeapi).
