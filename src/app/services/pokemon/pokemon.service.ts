@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { PokeAPI, PokemonDetails } from '../../shared/model/interface';
+import { PokeAPI, PokemonDetails } from '../../shared/model/pokemon';
 
 @Injectable({
   providedIn: 'root'

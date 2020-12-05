@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TYPE_COLOURS } from 'src/app/shared/model/interface';
+import { TYPE_COLOURS } from 'src/app/shared/model/pokemon';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class PokemonGeneralComponent implements OnInit {
 
   public getTypeColour(type: string): string {
     if (type) {
-      return '#' + TYPE_COLOURS[type];
+      return TYPE_COLOURS[type];
     }
   }
 }

@@ -17,8 +17,8 @@ import { PokemonGeneralComponent } from './views/pokemon/general/pokemon-general
 import { LoaderComponent } from './shared/loader/loader.component';
 
 // Pipes:
-import { HeightPipe } from './shared/pipes/height/height.pipe';
-import { WeightPipe } from './shared/pipes/weight/weight.pipe';
+import { PokemonHeightPipe } from './shared/pipes/pokemon-height/pokemon-height.pipe';
+import { PokemonWeightPipe } from './shared/pipes/pokemon-weight/pokemon-weight.pipe';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,8 @@ import { WeightPipe } from './shared/pipes/weight/weight.pipe';
     LoaderComponent,
 
     //Pipes
-    HeightPipe,
-    WeightPipe
+    PokemonHeightPipe,
+    PokemonWeightPipe
   ],
   imports: [
     BrowserModule,

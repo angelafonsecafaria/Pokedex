@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 
 // Ngx-Bootstrap:
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
-import { Generation, PokeAPI, PokemonDetails, Results, TYPE_COLOURS } from 'src/app/shared/model/interface';
+import { Generation, PokeAPI, PokemonDetails, Results, TYPE_COLOURS } from 'src/app/shared/model/pokemon';
 
 @Component({
   selector: 'app-home',
@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public openModal(template: TemplateRef<any>, pokemon: PokeAPI): BsModalRef {
     this.currentPokemon = pokemon;
-    // this.getEvolution(pokemonId)
     return this.modalRef = this.modalService.show(template, {
       class: 'modal-dialog-centered, modal-xl',
       keyboard: false,
@@ -61,7 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public getTypeColour(type: string): string {
     if (type) {
-      return '#' + TYPE_COLOURS[type];
+      return TYPE_COLOURS[type];
     }
   }
 
@@ -72,28 +71,22 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private fetchPokemons(generationId: number): void {
     this.isLoading = true;
-    if (this.selectedGeneration === 1) {
+    if (this.selectedGeneration === this.generations[0].id) {
       this.pokemonService.fetchPokemons()
         .pipe(takeUntil(this.unsubscribeAll),
-          finalize(() => this.isLoading = false))
+          finalize(() => this.isLoading = true))
         .subscribe((data: PokeAPI) => {
           this.pokemons = data.results;
-          if (this.pokemons) {
-            // get pokemon details for every pokemon
-            this.updatePokemons();
-          }
+          this.updatePokemons();
         });
     }
-    if (this.selectedGeneration !== 1) {
+    if (this.selectedGeneration !== this.generations[0].id) {
       this.pokemonService.fetchPokemonGeneration(generationId)
         .pipe(takeUntil(this.unsubscribeAll),
           finalize(() => this.isLoading = false))
         .subscribe((data: Generation) => {
           this.pokemons = data.pokemon_species;
-          if (this.pokemons) {
-            // get pokemon details for every pokemon
-            this.updatePokemons();
-          }
+          this.updatePokemons();
         });
     }
 
@@ -123,17 +116,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private updatePokemons() {
-    this.pokemons.forEach((pokemon: Results) => {
-      // set pokemon id
-      pokemon.id = this.extractPokemonId(pokemon)
-      this.fetchPokemonDetails(pokemon);
-      this.fetchPokemonSpeciesDetails(pokemon);
-    });
+    if (this.pokemons) {
+      this.pokemons.forEach((pokemon: Results) => {
+        // set pokemon id
+        pokemon.id = this.extractPokemonId(pokemon.url)
+        this.fetchPokemonDetails(pokemon);
+        this.fetchPokemonSpeciesDetails(pokemon);
+      });
+    }
     this.pokemons.sort(((nextId, prevId) => (prevId.id < nextId.id) ? 1 : ((prevId.id > nextId.id) ? -1 : 0)));
   }
 
-  private extractPokemonId(pokemon: Results): number {
-    return parseInt(pokemon.url.split('/')[pokemon.url.split('/').length - 2]);
+  private extractPokemonId(url: string): number {
+    let position: number = 2;
+    return parseInt(url.split('/')[url.split('/').length - position]);
   }
 }
 

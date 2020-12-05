@@ -6,39 +6,41 @@
     </ng-select>
   </div>
 </div>
-<div class="container poke-container">
-  <ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-      <div class="col mb-4" *ngFor="let pokemon of pokemons">
-        <div class="card">
-          <div class="name">
-            <h5> {{ pokemon.name }}</h5>
-          </div>
-          <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)"
-            tooltip="Learn more about pokemon">
-            <img src="https://pokeres.bastionbot.org/images/pokemon/{{ pokemon.id }}.png" width="120"
-              alt="{{ pokemon.name }}" onerror="this.src='../../../assets/image/ball.png';" />
-          </div>
-          <div class="info">
-            <span class="number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
-          </div>
-          <div class="row d-flex justify-content-center">
-            <div class="col-mb-6 types" *ngFor="let type of pokemon?.details?.types"
-              [style.background]="getTypeColour(type?.type?.name)">
-              {{ type.type.name }}
+<div class="poke-container">
+  <div class="container">
+    <ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <div class="col mb-4" *ngFor="let pokemon of pokemons">
+          <div class="card">
+            <div class="name">
+              <h5> {{ pokemon.name }}</h5>
+            </div>
+            <div class="img-container" (click)="openModal(pokemonDetails, pokemon, pokemon.id)"
+              tooltip="Learn more about pokemon">
+              <img src="https://pokeres.bastionbot.org/images/pokemon/{{ pokemon.id }}.png" width="120"
+                alt="{{ pokemon.name }}" onerror="this.src='../../../assets/image/ball.png';" />
+            </div>
+            <div class="info">
+              <span class="number">#{{ pokemon.id.toString().padStart(3, '0') }}</span>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-mb-6 types" *ngFor="let type of pokemon?.details?.types"
+                [style.background]="getTypeColour(type?.type?.name)">
+                {{ type.type.name }}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </ng-template>
-  <ng-template #loading>
-    <div class="col-lg-12 d-flex justify-content-center">
-      <div class="text-center">
-        <app-loader></app-loader>
+    </ng-template>
+    <ng-template #loading>
+      <div class="circle col-lg-12 d-flex justify-content-center">
+        <div class="text-center">
+          <app-loader></app-loader>
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
 </div>
 
 <ng-template #pokemonDetails>

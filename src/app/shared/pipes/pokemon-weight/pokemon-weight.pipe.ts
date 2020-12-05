@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'weight'
+  name: 'pokemonWeight'
 })
-export class WeightPipe implements PipeTransform {
+export class PokemonWeightPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): unknown {
     const kg = value / 10,

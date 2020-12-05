@@ -13,8 +13,6 @@ table {
   border-spacing: 0;
   min-width: 250px;
   text-align: center;
-  overflow: scroll; /* Sempre aparece a barra de rolagem */
-  overflow: auto;
   border: none;
 }
 
